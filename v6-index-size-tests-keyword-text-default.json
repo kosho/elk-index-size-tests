@@ -1,0 +1,32 @@
+{
+  "index_patterns": "v6-index-size-tests-keyword-text-default",
+  "settings": {
+    "index.refresh_interval": "5s",
+    "index.codec": "default",
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "doc": {
+      "dynamic_templates": [{
+        "string_fields": {
+          "mapping": {
+            "norms": false,
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "match_mapping_type": "string",
+          "match": "*"
+        }
+      }],
+      "properties": {
+      }
+    }
+  },
+  "aliases": {}
+}

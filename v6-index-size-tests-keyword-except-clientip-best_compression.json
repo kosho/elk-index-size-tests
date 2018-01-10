@@ -1,0 +1,30 @@
+{
+  "index_patterns": "v6-index-size-tests-keyword-except-clientip-best_compression",
+  "settings": {
+    "index.refresh_interval": "5s",
+    "index.codec": "best_compression",
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "doc": {
+      "dynamic_templates": [
+        {
+          "string_fields": {
+            "mapping": {
+              "type": "keyword"
+            },
+            "match_mapping_type": "string",
+            "match": "*"
+          }
+        }
+      ],
+      "properties": {
+        "clientip": {
+          "type": "ip"
+        }
+      }
+    }
+  },
+  "aliases": {}
+}
